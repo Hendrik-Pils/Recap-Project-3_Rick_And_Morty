@@ -11,3 +11,17 @@ export function buttonPrev() {
 }
 
 export function buttonNext() {}
+
+// function handlePrevButtonClick() {
+//     if (page > 1) {
+//       page--;
+//       fetchCharacters();
+//     }
+//   }
+
+//   function handleNextButtonClick() {
+//     if (page < maxPage) {
+//       page++;
+//       fetchCharacters();
+//     }
+//   }

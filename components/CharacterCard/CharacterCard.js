@@ -24,36 +24,3 @@ export function CharacterCard({ image, alt, name, status, type, episode }) {
 }
 
 console.log(CharacterCard);
-
-// const button = document.querySelector("button");
-// const list = document.querySelector("ul");
-
-// button.addEventListener("click", onClick);
-// button.addEventListener("click", async () => {
-//    /// ..
-// });
-
-// async function onClick() {
-//   const users = await getUsers();
-//   list.innerHTML = "";
-//   renderUsers(users);
-//   button.disabled = true;
-// }
-
-// // ['a', 'b', 'c', 'd'].slice(0, 2) -> ['a', 'b']
-// async function getUsers() {
-//   const response = await fetch("https://reqres.in/api/users");
-//   const json = await response.json();
-//   return json.data;
-// }
-
-// function renderUsers(users) {
-//   users.forEach((user) => {
-//     list.innerHTML += `
-// 		<li>
-// 			<span>${user.first_name} ${user.last_name}</span>
-// 			<img src=${user.avatar} alt="Picture of ${user.first_name}"/>
-// 		</li>
-// 		`;
-//   });
-// }

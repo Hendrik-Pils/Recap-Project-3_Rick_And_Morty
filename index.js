@@ -1,6 +1,6 @@
 import { CharacterCard } from "./components/CharacterCard/CharacterCard.js";
 import { navPagination } from "./components/NavPagination/NavPagination.js";
-// import { prevButton, nextButton } from "./components/NavButton/NavButton.js";
+import { initializeNavButtons } from "./components/NavButton/NavButton.js";
 
 const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
@@ -8,8 +8,6 @@ const searchBarContainer = document.querySelector(
 
 const navigation = document.querySelector('[data-js="navigation"]');
 const searchBar = document.querySelector('[data-js="search-bar"]');
-const prevButton = document.querySelector('[data-js="button-prev"]');
-const nextButton = document.querySelector('[data-js="button-next"]');
 
 // States
 const searchQuery = "";
@@ -50,16 +48,8 @@ async function renderCharacters(page) {
 
 renderCharacters(page);
 
-prevButton.addEventListener("click", () => {
-  if (page <= 1) return;
-  page--;
-  renderCharacters(page);
-  return page;
-});
-
-nextButton.addEventListener("click", () => {
-  if (page >= maxPage) return;
-  page++;
-  renderCharacters(page);
-  return page;
-});
+const { prevButton, nextButton } = initializeNavButtons(
+  page,
+  maxPage,
+  renderCharacters
+);

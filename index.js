@@ -6,11 +6,15 @@ const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
 );
 
+// ==========================================
+// TODO: activate search bar (see README.md)
+// ==========================================
+
 const navigation = document.querySelector('[data-js="navigation"]');
 const searchBar = document.querySelector('[data-js="search-bar"]');
-
-// States
 const searchQuery = "";
+
+// ==========================================
 
 let page = 1;
 
@@ -23,8 +27,6 @@ async function fetchMaxPages() {
 }
 
 const maxPage = await fetchMaxPages();
-
-// ===========
 
 async function fetchCharacters(page) {
   const response = await fetch(

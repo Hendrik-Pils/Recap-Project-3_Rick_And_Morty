@@ -56,20 +56,24 @@ renderCharacters(page);
 
 const searchBar = document.querySelector('[data-js="search-bar"]');
 const searchBarInput = document.querySelector('[data-js="search-bar-input"]');
-const searchBarButton = document.querySelector('[data-js="search-bar-button"]');
 
-function handleSearch() {
+function handleSearchInput() {
   searchQuery = searchBarInput.value;
   console.log(searchQuery);
 }
 
-function handleEnterKey(event) {
+function handleSearchEnterKey(event) {
   if (event.key === "Enter") {
     event.preventDefault(); // Prevent the form from submitting (if it's inside a form)
-    handleSearch();
+    handleSearchInput();
   }
 }
 
-searchBarButton.addEventListener("click", handleSearch);
-searchBar.addEventListener("submit", handleSearch); // This is optional, it handles form submission
-searchBarInput.addEventListener("keydown", handleEnterKey);
+function handleSearchButton(event) {
+  event.preventDefault(); // Prevent the form from submitting (if it's inside a form)
+  handleSearchInput();
+}
+
+searchBar.addEventListener("submit", handleSearchInput); // This is optional, it handles form submission
+searchBar.addEventListener("keydown", handleSearchEnterKey);
+searchBar.addEventListener("click", handleSearchButton);

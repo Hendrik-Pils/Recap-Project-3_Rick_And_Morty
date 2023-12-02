@@ -1,6 +1,7 @@
 import { CharacterCard } from "./components/CharacterCard/CharacterCard.js";
 import { navPagination } from "./components/NavPagination/NavPagination.js";
 import { initializeNavButtons } from "./components/NavButton/NavButton.js";
+import { handleSearchBar } from "./components/SearchBar/SearchBar.js";
 
 const navigation = document.querySelector('[data-js="navigation"]');
 const searchBarContainer = document.querySelector(
@@ -8,7 +9,6 @@ const searchBarContainer = document.querySelector(
 );
 
 let page = 1;
-let searchQuery = "";
 
 async function fetchMaxPages() {
   const response = await fetch(
@@ -46,34 +46,11 @@ const { prevButton, nextButton } = initializeNavButtons(
   renderCharacters
 );
 
+handleSearchBar();
 renderCharacters(page);
 
-// ================CODE FIX ABOVE==========================
-
 // ==========================================
-// TODO: activate search bar (see README.md)
+// TODO: add functions to handleSearchBar()
+// search bar generally works (console.log)
+// and is already outsourced to components
 // ==========================================
-
-const searchBar = document.querySelector('[data-js="search-bar"]');
-const searchBarInput = document.querySelector('[data-js="search-bar-input"]');
-
-function handleSearchInput() {
-  searchQuery = searchBarInput.value;
-  console.log(searchQuery);
-}
-
-function handleSearchEnterKey(event) {
-  if (event.key === "Enter") {
-    event.preventDefault(); // Prevent the form from submitting (if it's inside a form)
-    handleSearchInput();
-  }
-}
-
-function handleSearchButton(event) {
-  event.preventDefault(); // Prevent the form from submitting (if it's inside a form)
-  handleSearchInput();
-}
-
-searchBar.addEventListener("submit", handleSearchInput); // This is optional, it handles form submission
-searchBar.addEventListener("keydown", handleSearchEnterKey);
-searchBar.addEventListener("click", handleSearchButton);

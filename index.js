@@ -90,15 +90,11 @@ async function fetchMaxPages() {
 
   //======================================
 
-  handleSearchBar();
+  // handleSearchBar();
   renderCharacters(page);
 
   handleSearchBar((searchQuery) => {
-    try {
-      renderCharacters(page, searchQuery);
-    } catch (error) {
-      console.error(error.message);
-    }
+    renderCharacters(page, searchQuery);
   });
 })();
 

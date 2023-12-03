@@ -4,7 +4,7 @@ const searchBarInput = document.querySelector('[data-js="search-bar-input"]');
 export function handleSearchBar(callback) {
   searchBar.addEventListener("submit", (event) => {
     event.preventDefault();
-    let searchQuery = searchBarInput.value;
+    let searchQuery = searchBarInput.value.toLowerCase();
     console.log(searchQuery);
     if (callback) {
       callback(searchQuery);

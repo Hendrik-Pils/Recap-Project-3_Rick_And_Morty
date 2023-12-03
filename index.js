@@ -11,7 +11,6 @@ const searchBarContainer = document.querySelector(
 );
 
 const url = "https://rickandmortyapi.com/api/character";
-// let urlAppendix = `?page=${page}`;
 
 //======================================
 
@@ -43,13 +42,39 @@ async function fetchMaxPages() {
 
   //======================================
 
-  async function renderCharacters(page) {
+  // async function renderCharacters(page) {
+  //   const cardContainer = document.querySelector('[data-js="card-container"]');
+  //   cardContainer.innerHTML = "";
+
+  //   const characters = await fetchCharacters(page);
+
+  //   characters.forEach((character) => {
+  //     CharacterCard(character);
+  //   });
+  //   navPagination(page, maxPage);
+  // }
+
+  //======================================
+
+  async function renderCharacters(page, searchQuery = "") {
     const cardContainer = document.querySelector('[data-js="card-container"]');
     cardContainer.innerHTML = "";
 
     const characters = await fetchCharacters(page);
 
-    characters.forEach((character) => {
+    //==========
+    const filteredCharacters = characters.filter((character) => {
+      const characterName = character.name.toLowerCase();
+      return characterName.includes(searchQuery);
+    });
+
+    if (filteredCharacters.length === 0) {
+      throw new Error("No characters found for search query: ${searchQuery}");
+    }
+    //==========
+
+    // instead of characters.forEach...
+    filteredCharacters.forEach((character) => {
       CharacterCard(character);
     });
     navPagination(page, maxPage);
@@ -67,6 +92,14 @@ async function fetchMaxPages() {
 
   handleSearchBar();
   renderCharacters(page);
+
+  handleSearchBar((searchQuery) => {
+    try {
+      renderCharacters(page, searchQuery);
+    } catch (error) {
+      console.error(error.message);
+    }
+  });
 })();
 
 // ==========================================

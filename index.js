@@ -97,7 +97,3 @@ async function fetchMaxPages() {
     renderCharacters(page, searchQuery);
   });
 })();
-
-// ==========================================
-// TODO: throw error message line 100 to frontend
-// ==========================================

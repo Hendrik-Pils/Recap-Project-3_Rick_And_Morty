@@ -15,3 +15,7 @@ export function handleSearchBar(callback) {
     }
   });
 }
+
+// ==========================================
+// TODO: throw error message line 14 to frontend
+// ==========================================

@@ -103,7 +103,5 @@ async function fetchMaxPages() {
 })();
 
 // ==========================================
-// TODO: add functions to handleSearchBar()
-// search bar generally works (console.log)
-// and is already outsourced to components
+// TODO: throw error message line 100 to frontend
 // ==========================================

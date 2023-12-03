@@ -1,7 +1,7 @@
 const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 
-export function initializeNavButtons(page, maxPage, renderCharacters) {
+export function InitializeNavButtons(page, maxPage, renderCharacters) {
   prevButton.addEventListener("click", () => {
     if (page <= 1) return;
     page--;

@@ -1,21 +1,24 @@
+import { ClearErrorMessage } from "../ErrorMessage/ErrorMessage.js";
+
 const searchBar = document.querySelector('[data-js="search-bar"]');
 const searchBarInput = document.querySelector('[data-js="search-bar-input"]');
 
-export function handleSearchBar(callback) {
+//========================
+
+export function HandleSearchBar(callback) {
   searchBar.addEventListener("submit", (event) => {
     event.preventDefault();
-    try {
-      let searchQuery = searchBarInput.value.toLowerCase();
-      console.log(searchQuery);
-      if (callback) {
-        callback(searchQuery);
-      }
-    } catch (error) {
-      console.error(error.message);
+    let searchQuery = searchBarInput.value.toLowerCase();
+    // console.log(searchQuery);
+
+    //======================== send back searchQuery to index.js
+    //======================== clear error message on change of input
+
+    if (callback) {
+      callback(searchQuery);
+      searchBarInput.addEventListener("input", () => {
+        ClearErrorMessage();
+      });
     }
   });
 }
-
-// ==========================================
-// TODO: throw error message line 14 to frontend
-// ==========================================
